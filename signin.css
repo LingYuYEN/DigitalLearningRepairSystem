@@ -9,7 +9,7 @@ html,body {
     min-width: 900px;
     position:relative;
     /*background-color: lightgoldenrodyellow;*/
-    background:radial-gradient(circle at center,white,gray);
+    background:radial-gradient(circle at center,white, white,lightblue);
 }
 /*.container-fluid {*/
 /*    background:radial-gradient(circle at center,yellow,red);*/
