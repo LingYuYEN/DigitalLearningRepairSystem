@@ -1,6 +1,6 @@
 .navbar {
-    background: #9492E7;
-    font-size: 20px;
+    background-image: url("images/navbar_bg_image.jpg");
+    font-size: 25px;
 }
 
 .highlight {

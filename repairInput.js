@@ -115,7 +115,7 @@ function submitOnclick() {
     let jsonStr = JSON.stringify(postObj)
     $.ajax({
         type: 'POST',
-        url: localStorage.getItem('url') + 'repair_infos',
+        url: localStorage.getItem('url') + 'dl_repair_infos',
         dataType: 'json',
         data: jsonStr,
         contentType: "application/json",
@@ -143,7 +143,7 @@ function updatePassword() {
 
     $.ajax({
         type: 'POST',
-        url: localStorage.getItem('url') + 'repair_infos/change_password?account=' + inputAccount + '&password=' + inputPassword + '&new_password=' + inputNewPassword,
+        url: localStorage.getItem('url') + 'dl_repair_infos/change_password?account=' + inputAccount + '&password=' + inputPassword + '&new_password=' + inputNewPassword,
         dataType: 'json',
         contentType: "application/json",
         success: function (response) {

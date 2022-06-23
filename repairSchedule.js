@@ -1,6 +1,5 @@
 window.onload = function () {
     autoGetDetailInfos('detail_body')
-    // console.log(localStorage.getItem('repair_id'))
     let case_closed_remark = document.getElementById('case_closed_remark')
     let alias = localStorage.getItem('alias')
     if (alias !== "慈暉工程師") {
@@ -14,7 +13,7 @@ let time = now.toLocaleString()
 
 function getScheduleInfo() {
 
-    let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
+    let urlStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id')
     $.getJSON(urlStr, function (data) {
         let repair_schedule_div = document.getElementById('repair_schedule_div')
         let repair_schedule_school = document.createElement('label')
@@ -48,9 +47,9 @@ function getScheduleInfo() {
         repair_schedule_change_status.type = 'button'
         repair_schedule_change_status.onclick = function () {
 
-            let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id') + '/detail?repair_status=處理中'
+            let urlStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id') + '/detail?repair_status=處理中'
 
-            let putUrlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
+            let putUrlStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id')
 
             let putObj = {
                 id: 0,
@@ -67,7 +66,6 @@ function getScheduleInfo() {
                     type: 'PUT',
                     success: function(result) {
                         console.log(result)
-                        window.location.reload()
                     }
                 }),
                 $.ajax({
@@ -132,7 +130,7 @@ function getScheduleInfo() {
 }
 
 function putRepairDetail() {
-    let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
+    let urlStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id')
     let text = document.getElementById('add_message')
     let putObj = {
         id: 0,
@@ -157,7 +155,7 @@ function putRepairDetail() {
 
 }
 function autoGetDetailInfos(id) {
-    let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
+    let urlStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id')
 
     $.getJSON(urlStr, function (dataArr) {
         let detail_arr = dataArr.repair_record;
@@ -171,7 +169,6 @@ function autoGetDetailInfos(id) {
                 let detail_td_time = document.createElement('td')
                 let detail_td_info = document.createElement('td')
                 let detail_td_user = document.createElement('td')
-                // let detail_td_status = document.createElement('td')
 
                 detail_th.classList.add('text-center')
                 detail_th.scope = 'row'
@@ -179,21 +176,19 @@ function autoGetDetailInfos(id) {
                 detail_td_time.innerHTML = data['record_time']
                 detail_td_info.innerHTML = data['record_info']
                 detail_td_user.innerHTML = data['record_user']
-                // detail_td_status.innerHTML = '處理中'
 
                 detail_tbody.appendChild(detail_tr)
                 detail_tr.appendChild(detail_th)
                 detail_tr.appendChild(detail_td_time)
                 detail_tr.appendChild(detail_td_info)
                 detail_tr.appendChild(detail_td_user)
-                // detail_tr.appendChild(detail_td_status)
             });
         }
     })
 }
 
 function getDetailInfos(id) {
-    let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
+    let urlStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id')
 
     $.getJSON(urlStr, function (dataArr) {
         let detail_arr = dataArr.repair_record;
@@ -207,7 +202,6 @@ function getDetailInfos(id) {
                 let detail_td_time = document.createElement('td')
                 let detail_td_info = document.createElement('td')
                 let detail_td_user = document.createElement('td')
-                // let detail_td_status = document.createElement('td')
 
                 detail_th.classList.add('text-center')
                 detail_th.scope = 'row'
@@ -215,14 +209,12 @@ function getDetailInfos(id) {
                 detail_td_time.innerHTML = data['record_time']
                 detail_td_info.innerHTML = data['record_info']
                 detail_td_user.innerHTML = data['record_user']
-                // detail_td_status.innerHTML = '處理中'
 
                 detail_tbody.appendChild(detail_tr)
                 detail_tr.appendChild(detail_th)
                 detail_tr.appendChild(detail_td_time)
                 detail_tr.appendChild(detail_td_info)
                 detail_tr.appendChild(detail_td_user)
-                // detail_tr.appendChild(detail_td_status)
             }).done(function () {
                 window.location.reload()
             })
@@ -235,7 +227,7 @@ function selectStatusAction() {
     $('#inputStatus').change(function () {
         statusSelect = $('#inputStatus option:selected').text()
         // 變更狀態
-        let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id') + '/detail?repair_status=' + statusSelect
+        let urlStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id') + '/detail?repair_status=' + statusSelect
         $.ajax({
             url: urlStr,
             type: 'PUT',
@@ -248,9 +240,9 @@ function selectStatusAction() {
 
         if (statusSelect === '已結案') {
             // 加入結案時間, 狀態, 結案註解
-            let putUrlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id') + '/end_time?end_time=' + time
-            let putStatusStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id') + '/detail?repair_status=' + statusSelect
-            let putFinalMessageUrlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
+            let putUrlStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id') + '/end_time?end_time=' + time
+            let putStatusStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id') + '/detail?repair_status=' + statusSelect
+            let putFinalMessageUrlStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id')
 
             let putObj = {
                 id: 0,

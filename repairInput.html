@@ -9,8 +9,8 @@
     <script type="text/javascript" src="controller.js"></script>
     <style>
         .navbar {
-            background: #9492E7;
-            font-size: 20px;
+            background-image: url("images/navbar_bg_image.jpg");
+            font-size: 25px;
         }
         textarea {
             min-height: 62px;
@@ -19,24 +19,24 @@
 </head>
 <body>
 
-<nav class="navbar navbar-light">
+<nav class="navbar navbar-light" >
     <ul class="nav m-2 ml-4">
         <li class="nav-item">
-            <a class="nav-link active text-dark" href="repairInput.html">障礙申告</a>
+            <a class="nav-link active text-warning" href="repairInput.html">障礙申告</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="repairSearch.html">障礙查詢</a>
+            <a class="nav-link text-warning" href="repairSearch.html">障礙查詢</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active text-dark" href="" onclick="getAccount()" id="searchPwd" data-toggle="modal" data-target="#searchPwd-window">更改密碼</a>
+            <a class="nav-link active text-warning" href="" onclick="getAccount()" id="searchPwd" data-toggle="modal" data-target="#searchPwd-window">更改密碼</a>
         </li>
     </ul>
     <ul class="nav m-2 mr-4">
         <li class="nav-item">
-            <p class="nav-link text-dark m-0" id="show_alias_p">test</p>
+            <p class="nav-link text-warning m-0" id="show_alias_p">test</p>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="signin.html">登出</a>
+            <a class="nav-link text-warning" href="signin.html">登出</a>
         </li>
     </ul>
 </nav>
@@ -105,13 +105,18 @@
             </div>
             <select class="custom-select" id="inputGroupSelect05">
                 <option selected>Choose...</option>
-                <option value="1">宏碁老師端電腦</option>
-                <option value="2">宏碁學生端電腦</option>
-                <option value="3">宏碁螢幕顯示器</option>
-                <option value="4">金偉教學廣播系統</option>
-                <option value="5">碁優還原系統</option>
-                <option value="6">輔助教學軟體</option>
+                <option value="1">防火牆</option>
+                <option value="2">交換器</option>
+                <option value="3">無線AP</option>
+                <option value="4">NAS 相關</option>
                 <option value="7">其他</option>
+<!--                <option value="1">宏碁老師端電腦</option>-->
+<!--                <option value="2">宏碁學生端電腦</option>-->
+<!--                <option value="3">宏碁螢幕顯示器</option>-->
+<!--                <option value="4">金偉教學廣播系統</option>-->
+<!--                <option value="5">碁優還原系統</option>-->
+<!--                <option value="6">輔助教學軟體</option>-->
+<!--                <option value="7">其他</option>-->
             </select>
             <script>
                 selectAction()
