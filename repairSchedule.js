@@ -60,14 +60,13 @@ function getScheduleInfo() {
 
             let json = JSON.stringify(putObj)
 
-            $.when(
-                $.ajax({
-                    url: urlStr,
-                    type: 'PUT',
-                    success: function(result) {
-                        console.log(result)
-                    }
-                }),
+            $.ajax({
+                url: urlStr,
+                type: 'PUT',
+                success: function(result) {
+                    console.log(result)
+                }
+            }).then(function () {
                 $.ajax({
                     url: putUrlStr,
                     type: 'PUT',
@@ -75,13 +74,40 @@ function getScheduleInfo() {
                     contentType: "application/json",
                     success: function(result) {
                         console.log(result)
-                        window.location.reload()
                     },
                     error: function () {
                         console.log('error')
-                    }
+                    },
+                }).then(function () {
+                    window.location.reload()
                 })
-            )
+            })
+
+
+            // $.when(
+            //     $.ajax({
+            //         url: urlStr,
+            //         type: 'PUT',
+            //         success: function(result) {
+            //             console.log(result)
+            //         }
+            //     }),
+            //     $.ajax({
+            //         url: putUrlStr,
+            //         type: 'PUT',
+            //         data: json,
+            //         contentType: "application/json",
+            //         success: function(result) {
+            //             console.log(result)
+            //         },
+            //         done: function () {
+            //             window.location.reload()
+            //         },
+            //         error: function () {
+            //             console.log('error')
+            //         },
+            //     })
+            // )
 
 
             let detail_tbody = document.getElementById('detail_body')
@@ -146,13 +172,13 @@ function putRepairDetail() {
         contentType: "application/json",
         success: function(result) {
             console.log(result)
-            window.location.reload()
         },
         error: function () {
             console.log('error')
         }
+    }).then(function () {
+        window.location.reload()
     })
-
 }
 function autoGetDetailInfos(id) {
     let urlStr = localStorage.getItem('url') + 'dl_repair_infos/' + localStorage.getItem('repair_id')

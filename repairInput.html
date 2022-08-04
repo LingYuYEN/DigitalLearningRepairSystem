@@ -10,6 +10,8 @@
     <style>
         .navbar {
             background-image: url("images/navbar_bg_image.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
             font-size: 25px;
         }
         textarea {
@@ -69,7 +71,7 @@
                         $("#inputGroupSelect02").empty()
                         let optTownship = $('#inputGroupSelect01 option:selected')
                         optTownshipStr = optTownship.text()
-                        let urlStr = localStorage.getItem('url') + 'users/' + optTownshipStr
+                        let urlStr = localStorage.getItem('url') + 'dl_users/' + optTownshipStr
                         $.getJSON(urlStr, function (dataArr) {
                             $('#inputGroupSelect02').append('<option value="">Choose...</option>')
                             dataArr.forEach(function (data) {
@@ -110,13 +112,6 @@
                 <option value="3">無線AP</option>
                 <option value="4">NAS 相關</option>
                 <option value="7">其他</option>
-<!--                <option value="1">宏碁老師端電腦</option>-->
-<!--                <option value="2">宏碁學生端電腦</option>-->
-<!--                <option value="3">宏碁螢幕顯示器</option>-->
-<!--                <option value="4">金偉教學廣播系統</option>-->
-<!--                <option value="5">碁優還原系統</option>-->
-<!--                <option value="6">輔助教學軟體</option>-->
-<!--                <option value="7">其他</option>-->
             </select>
             <script>
                 selectAction()

@@ -8,7 +8,7 @@ window.onload = function () {
 
 // 選擇鄉鎮市區
 function getTownship() {
-    let urlStr = localStorage.getItem('url') + 'users'
+    let urlStr = localStorage.getItem('url') + 'dl_users'
 
     $.ajax({
         type: 'GET',

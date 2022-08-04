@@ -1,5 +1,7 @@
 .navbar {
     background-image: url("images/navbar_bg_image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     font-size: 25px;
 }
 
