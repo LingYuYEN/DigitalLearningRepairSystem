@@ -82,3 +82,4 @@ poetry.lock
 *.db
 .idea
 .xml
+*.xml
