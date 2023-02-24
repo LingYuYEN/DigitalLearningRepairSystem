@@ -7,20 +7,9 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="repairInput.js"></script>
     <script type="text/javascript" src="controller.js"></script>
-    <style>
-        .navbar {
-            background-image: url("images/navbar_bg_image.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            font-size: 25px;
-        }
-        textarea {
-            min-height: 62px;
-        }
-    </style>
+    <link rel="stylesheet" href="repairInput.css">
 </head>
 <body>
-
 <nav class="navbar navbar-light" >
     <ul class="nav m-2 ml-4">
         <li class="nav-item">
@@ -103,15 +92,19 @@
 
         <div class="input-group mb-3">
             <div class="input-group-append">
-                <label class="input-group-text" for="inputGroupSelect05">設備類型</label>
+                <label class="input-group-text" for="inputGroupSelect05">障礙類型</label>
             </div>
             <select class="custom-select" id="inputGroupSelect05">
                 <option selected>Choose...</option>
-                <option value="1">防火牆</option>
-                <option value="2">交換器</option>
-                <option value="3">無線AP</option>
-                <option value="4">NAS 相關</option>
-                <option value="7">其他</option>
+                <option value="1">【Aruba AP】無燈號反應</option>
+                <option value="2">【Aruba AP】燈號異常閃爍</option>
+                <option value="3">【Aruba AP】無法連上 SSID</option>
+                <option value="4">【Aruba AP】看不到 SSID</option>
+                <option value="5">【Aruba AP】載具無法取得 IP</option>
+                <option value="6">【POE 交換器】無電源反應</option>
+                <option value="7">【POE 交換器】Port 無燈號顯示</option>
+                <option value="8">【5G 分享器】Zyxel Nebula NR5101</option>
+                <option value="9">【其他使用問題】</option>
             </select>
             <script>
                 selectAction()
@@ -125,11 +118,13 @@
             <textarea class="form-control" id="input03" placeholder="請描述障礙問題" aria-label="With textarea"></textarea>
         </div>
 
+        <div class="loadingdiv" id="loading" style="display: none">
+            <img src="images/loading.gif"  alt=""/>
+        </div>
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             送出
         </button>
-
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

@@ -114,6 +114,11 @@ function submitOnclick() {
 
     let jsonStr = JSON.stringify(postObj)
     $.ajax({
+        beforeSend: function () {
+            console.log('before')
+            //將div顯示
+            $('#loading').css("display", "");
+        },
         type: 'POST',
         url: localStorage.getItem('url') + 'dl_repair_infos',
         dataType: 'json',
@@ -121,9 +126,14 @@ function submitOnclick() {
         contentType: "application/json",
         success: function () {
             console.log('success')
+            //再次隱藏
+            $('#loading').css("display", "none");
         },
         error: function (err) {
             console.log('error: ' + err)
+        },
+        complete: function () {
+            location.href='repairSearch.html'
         }
     })
 }
@@ -140,10 +150,11 @@ function updatePassword() {
     let inputAccount = document.getElementById('inputPasswordSelect01').value
     let inputPassword = document.getElementById('inputPasswordSelect02').value
     let inputNewPassword = document.getElementById('inputPasswordSelect03').value
+    let url = localStorage.getItem('url') + 'dl_repair_infos/change_password?account=' + inputAccount + '&password=' + encodeURIComponent(inputPassword) + '&new_password=' + encodeURIComponent(inputNewPassword)
 
     $.ajax({
         type: 'POST',
-        url: localStorage.getItem('url') + 'dl_repair_infos/change_password?account=' + inputAccount + '&password=' + inputPassword + '&new_password=' + inputNewPassword,
+        url: url,
         dataType: 'json',
         contentType: "application/json",
         success: function (response) {
